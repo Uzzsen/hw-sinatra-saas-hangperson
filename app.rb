@@ -43,7 +43,7 @@ class HangpersonApp < Sinatra::Base
     letter = params[:guess].to_s[0]
     ### YOUR CODE HERE ###
     if letter.nil? || letter =~/[^\w]/ then
-      flash[:message] ="You have submitted either a non-letter or a blank form." 
+      flash[:message] ="Invalid guess." 
       redirect '/show'
     end  
     flash[:message] ="You have already used that letter." unless @game.guess letter
