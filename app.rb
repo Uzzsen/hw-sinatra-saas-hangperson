@@ -48,7 +48,7 @@ class HangpersonApp < Sinatra::Base
     elsif !@game.guess letter  
     flash[:message] ="You have already used that letter." 
       redirect '/show'
-    endif  
+    end  
   end
   
   # Everytime a guess is made, we should eventually end up at this route.
