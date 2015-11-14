@@ -23,7 +23,7 @@ class HangpersonGame
     
     if @word.downcase.include?(letter.downcase) && @guesses.downcase.include?(letter.downcase) then
       return false
-    elsif @word.include?(letter) && !@guesses.include?(letter) then
+    elsif @word.downcase.include?(letter.downcase) && !@guesses.downcase.include?(letter.downcase) then
       @guesses << letter  
     elsif !@wrong_guesses.downcase.include?(letter.downcase) then
       @wrong_guesses << letter
@@ -34,6 +34,7 @@ class HangpersonGame
  end
   
  def word_with_guesses
+   return '' if @guesses == '' 
    @word.chars.map { |wl|
    @guesses.chars.any? { |gl| wl == gl} ? wl : "-"
     }.join
