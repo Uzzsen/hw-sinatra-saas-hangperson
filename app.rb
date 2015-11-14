@@ -62,7 +62,7 @@ class HangpersonApp < Sinatra::Base
       redirect '/win' 
     elsif check == :lose then 
       redirect '/lose'
-    elsif check == :play
+    else
       erb :show # You may change/remove this line
     end  
   end
