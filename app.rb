@@ -42,13 +42,24 @@ class HangpersonApp < Sinatra::Base
   post '/guess' do
     letter = params[:guess].to_s[0]
     ### YOUR CODE HERE ###
-    if letter.nil? || letter =~/[^\w]/ then
+
+#    if letter.nil? || letter =~/[^\w]/ then
+#      flash[:message] ="Invalid guess." 
+#      redirect '/show'
+#    end  
+#    flash[:message] ="You have already used that letter." unless @game.guess letter
+#    redirect '/show'
+
+    begin 
+      letter_guess = @game.guess letter
+    rescue ArgumentError
       flash[:message] ="Invalid guess." 
-      redirect '/show'
     end  
-    flash[:message] ="You have already used that letter." unless @game.guess letter
+    
+    flash[:message] ="You have already used that letter." unless letter_guess
     redirect '/show'
-  end
+
+    end
   
   # Everytime a guess is made, we should eventually end up at this route.
   # Use existing methods in HangpersonGame to check if player has
